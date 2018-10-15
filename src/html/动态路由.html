@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <title>动态路由</title>
+</head>
+<body>
+<div id="app">
+    <h1>Hello App!</h1>
+    <p>
+        <router-link to="/user/1">User1</router-link>
+        <router-link to="/user/2">User2</router-link>
+        <router-link to="/user/3">User3</router-link>
+    </p>
+    <router-view></router-view>
+</div>
+
+<script type="text/javascript">
+    const User = {
+        template: '<div>User {{$route.params.id}}</div>'
+    }
+
+    const router = new VueRouter({
+        // mode: 'history',
+        routes: [
+            {path: '/user/:id', component: User}
+        ]
+    })
+
+    const app = new Vue({
+        router
+    }).$mount('#app');
+
+</script>
+
+
+</body>
+</html>
